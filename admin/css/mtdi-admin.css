@@ -240,3 +240,9 @@ a.button.instalplugin.alignright {
 .mtdi-demo-import-step.button-primary.updating-message:before {
 	margin-top: 12px;
 }
+
+.mtdi-plugin-req-wrapper {
+	height: 240px;
+	overflow: scroll;
+	overflow-x: hidden;
+}
