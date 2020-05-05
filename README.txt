@@ -10,6 +10,7 @@ License:            GPLv3
 License URI:        https://www.gnu.org/licenses/gpl-3.0.html
 
 One Click Demo Importer For Mystery Themes official themes demo content, customization options, widgets and theme settings.
+This plugin fetches the mysterythemes github config files to get demo source details. 
 
 == Description ==
 
