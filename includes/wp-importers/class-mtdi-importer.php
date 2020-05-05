@@ -376,7 +376,7 @@ class MTDI_Demo_WPImporter extends WP_Importer {
 				}
 			} elseif ( $create_users ) {
 				if ( ! empty( $_POST['user_new'][ $i ] ) ) {
-					$user_id = wp_create_user( $_POST['user_new'][ $i ], wp_generate_password() );
+					$user_id = wp_create_user( sanitize_text_field( $_POST['user_new'][ $i ] ), wp_generate_password() );
 				} elseif ( $this->version != '1.0' ) {
 					$user_data = array(
 						'user_login'   => $old_login,

@@ -290,7 +290,7 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 			$install_status = install_plugin_install_status( $api );
 
 			if ( current_user_can( 'activate_plugin', $plugin_init ) && is_plugin_inactive( $plugin_init ) ) {
-				$pluginList = $_POST['pluginList'];
+				$pluginList = sanitize_text_field( $_POST['pluginList'] );
 				$current 	= get_option( 'active_plugins' );
 				foreach ( $pluginList as $value ) {
 					$plugin = $value['slug'];
