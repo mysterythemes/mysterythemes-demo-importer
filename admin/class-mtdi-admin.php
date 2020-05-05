@@ -276,8 +276,8 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 			} elseif ( is_null( $result ) ) {
 				global $wp_filesystem;
 
-				$status['errorCode']    = 'unable_to_connect_to_filesystem';
-				$status['errorMessage'] = __( 'Unable to connect to the filesystem. Please confirm your credentials.', 'mysterythemes-demo-importer' );
+				$status['errorCode']    = esc_html__( 'unable_to_connect_to_filesystem', 'mysterythemes-demo-importer' );
+				$status['errorMessage'] = esc_html__( 'Unable to connect to the filesystem. Please confirm your credentials.', 'mysterythemes-demo-importer' );
 
 				// Pass through the error from WP_Filesystem if one was raised.
 				if ( $wp_filesystem instanceof WP_Filesystem_Base && is_wp_error( $wp_filesystem->errors ) && $wp_filesystem->errors->get_error_code() ) {
@@ -300,7 +300,7 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 						$current[] = $plugin;
 						sort( $current );
 						do_action( 'activate_plugin', trim( $plugin ) );
-						update_option( 'active_plugins', $current );
+						update_option( 'active_plugins', esc_html( $current ) );
 						do_action( 'activate_' . trim( $plugin ) );
 						do_action( 'activated_plugin', trim( $plugin) );
 					}
@@ -323,7 +323,7 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 		public function activate_req_plugins() {
 
 			if ( ! wp_verify_nonce( $_POST['_wpnonce'], 'mtdi_admin_import_nonce' ) ) {
-				die( 'This action was stopped for security purposes.' );
+				die( esc_html__( 'This action was stopped for security purposes.', 'mysterythemes-demo-importer' ) );
 			}
 
 			$plugininit 	= ( isset( $_POST['plugin_init'] ) ) ? esc_attr( $_POST['plugin_init'] ) : '';
@@ -341,7 +341,7 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 				wp_send_json_success(
 					array(
 						'success' => true,
-						'message' => __( 'Plugin Successfully Activated.', 'mysterythemes-demo-importer' ),
+						'message' => esc_html__( 'Plugin Successfully Activated.', 'mysterythemes-demo-importer' ),
 					)
 				);
 			}
@@ -370,8 +370,8 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 					wp_send_json_error(
 						array(
 							'slug'         => '',
-							'errorCode'    => 'no_demo_specified',
-							'errorMessage' => __( 'No demo specified.', 'mysterythemes-demo-importer' ),
+							'errorCode'    => esc_html__( 'No demo specified', 'mysterythemes-demo-importer' ),
+							'errorMessage' => esc_html__( 'No demo specified.', 'mysterythemes-demo-importer' ),
 						)
 					);
 				}
@@ -382,7 +382,7 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 				}
 
 				if ( ! current_user_can( 'import' ) ) {
-					$status['errorMessage'] = __( 'Sorry, you have no permission to import the demo content.', 'mysterythemes-demo-importer');
+					$status['errorMessage'] = esc_html__( 'Sorry, you have no permission to import the demo content.', 'mysterythemes-demo-importer');
 					wp_send_json_error( $status );
 				}
 
@@ -422,7 +422,6 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 				}
 
 				wp_send_json_success( $status );
-
 			}
 			wp_die();
 
@@ -455,21 +454,21 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 						case 'show_on_front':
 							// Your latest posts
 							if ( in_array( $option_value, array( 'posts', 'page' ) ) ) {
-								update_option( 'show_on_front', $option_value );
+								update_option( 'show_on_front', sanitize_text_field( $option_value ) );
 							}
 							break;
 
 						case 'home_title':
 							// static page > Homepage (page_on_front)
 							if ( is_object( $page ) && $page->ID ) {
-								update_option( 'page_on_front', $page->ID );
+								update_option( 'page_on_front', esc_attr( $page->ID ) );
 							}
 							break;
 
 						case 'blog_title':
 							// static page > Posts page: (page_for_posts)
 							if ( is_object( $page ) && $page->ID ) {
-								update_option( 'page_for_posts', $page->ID );
+								update_option( 'page_for_posts', esc_attr( $page->ID ) );
 							}
 							break;
 
@@ -543,7 +542,7 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 
 				flush_rewrite_rules();
 			} else {
-				$status['errorMsg'] = __( 'Missing XML file dummy content.', 'mysterythemes-demo-importer' );
+				$status['errorMsg'] = esc_html__( 'Missing XML file dummy content.', 'mysterythemes-demo-importer' );
 				wp_send_json_error( $status );
 			}
 
@@ -583,7 +582,7 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 					return false;
 				}
 			} else {
-				$status['errorMsg'] = __( 'The DAT file customizer data is missing.', 'mysterythemes-demo-importer' );
+				$status['errorMsg'] = esc_html__( 'The DAT file customizer data is missing.', 'mysterythemes-demo-importer' );
 				wp_send_json_error( $status );
 			}
 
@@ -624,7 +623,7 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 				}
 
 			} else {
-				$status['errorMsg'] = __( 'The WIE file widget content is missing.', 'mysterythemes-demo-importer' );
+				$status['errorMsg'] = esc_html__( 'The WIE file widget content is missing.', 'mysterythemes-demo-importer' );
 				wp_send_json_error( $status );
 			}
 
