@@ -27,7 +27,6 @@ jQuery(function($) {
                 '_wpnonce': _wpnonce,
             }),
             success: function(response) {
-                //console.log(response);
                 $('#mtdi-demo-popup-wrap').addClass('mtdi-popup-show');
                 $('#mtdi-demo-popup-wrap').html(response);
                 $(this).removeClass('updating-message');

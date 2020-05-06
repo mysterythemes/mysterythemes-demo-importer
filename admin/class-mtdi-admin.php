@@ -172,8 +172,8 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 
 			$selected_demo 	= get_template();
 			$demodata 		= get_transient( 'mtdi_theme_packages' );
-			
-			if ( empty( $demodata )	) {
+
+			if ( empty( $demodata ) || $demodata == false ) {
 				$demodata = $this->retrieve_demo_by_activatetheme( $selected_demo );
 			}
 			$selected_demo 	= sanitize_text_field( $_POST['plugin_slug'] );
