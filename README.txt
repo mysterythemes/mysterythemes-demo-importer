@@ -1,6 +1,5 @@
 === Mystery Themes Demo Importer ===
 Contributors:       mysterythemes
-Donate link:        https://mysterythemes.com/
 Tags:               mysterythemes, one click demo import, theme demos, demo, importer
 Requires at least:  4.7
 Tested up to:       5.3
@@ -49,10 +48,6 @@ Import "Mystery Themes" every official themes by only a single click. Simple ins
 1. Theme Demos listing page.
 2. Install and activate the required plugins.
 3. Finally, Import the Demo with just one click.
-
-== Resources ==
-    Official Mystery Themes Github Repository
-    Source: https://raw.githubusercontent.com/mysterythemes/themes-demo-pack/
 
 == Changelog ==
     * 1.0.0 *
