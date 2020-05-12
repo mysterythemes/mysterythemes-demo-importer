@@ -56,7 +56,7 @@ if ( ! class_exists( 'MTDI_Library' ) ) :
 			}
 
 			$all_json_data 	= array();
-			$mt_demo_config_file_url  		= '';
+			$mt_demo_config_file_url  		= 'https://demo.mysterythemes.com/themes-demo-pack/'.esc_html( $activated_theme ).'/demo.json';
 			$mt_demo_config_file = apply_filters( 'mtdi_custom_json_config_path', esc_url( $mt_demo_config_file_url ) );
 			$all_json_data 	= MTDI_Library::get_remote_data( $mt_demo_config_file );
 			if ( is_wp_error( $all_json_data ) ) {
