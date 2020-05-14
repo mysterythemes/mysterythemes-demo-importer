@@ -246,3 +246,8 @@ a.button.instalplugin.alignright {
 	overflow: scroll;
 	overflow-x: hidden;
 }
+
+.mtdi-demo-import-step.button-primary.updating-message::before,
+.mtdi-install-setup.button-primary.updating-message::before {
+	margin-top: 12px;
+}
