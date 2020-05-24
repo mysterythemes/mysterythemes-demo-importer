@@ -648,13 +648,14 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 		 */
 		public function mtdi_update_widget_data( $widget, $widget_type, $instance_id, $demo_data ) {
 
-			if ( 'nav_menu' == $widget_type ) {
-				$nav_menu = wp_get_nav_menu_object( $widget['title'] );
+			// if ( 'nav_menu' == $widget_type ) {
+			// 	$nav_menu = wp_get_nav_menu_object( $widget['title'] );
 
-				if ( is_object( $nav_menu ) && $nav_menu->term_id ) {
-					$widget['nav_menu'] = $nav_menu->term_id;
-				}
-			} elseif ( ! empty( $demo_data['widgets_data_update'] ) ) {
+			// 	if ( is_object( $nav_menu ) && $nav_menu->term_id ) {
+			// 		$widget['nav_menu'] = $nav_menu->term_id;
+			// 	}
+			// }
+			if ( ! empty( $demo_data['widgets_data_update'] ) ) {
 				foreach ( $demo_data['widgets_data_update'] as $dropdown_type => $dropdown_data ) {
 					if ( ! in_array( $dropdown_type, array( 'multi_checkbox', 'dropdown_categories', 'dropdown_pages', 'navigation_menus' ) ) ) {
 						continue;
@@ -685,19 +686,6 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 								}
 							}
 							break;
-						case 'navigation_menus':
-							foreach ( $dropdown_data as $widget_id => $widget_data ) {
-								if ( ! empty( $widget_data[ $instance_id ] ) && $widget_id == $widget_type ) {
-									foreach ( $widget_data[ $instance_id ] as $widget_key => $widget_value ) {
-										$term = get_term_by('name', $widget_value, 'nav_menu');
-
-										if ( $term->term_id ) {
-											$widget[ $widget_key ] = $term->term_id;
-										}
-									}
-								}
-							}
-							break;
 						case 'dropdown_categories':
 							foreach ( $dropdown_data as $taxonomy => $taxonomy_data ) {
 								if ( ! taxonomy_exists( $taxonomy ) ) {
@@ -718,6 +706,19 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 							}
 							break;
 
+						case 'navigation_menus':
+							foreach ( $dropdown_data as $widget_id => $widget_data ) {
+								if ( ! empty( $widget_data[ $instance_id ] ) && $widget_id == $widget_type ) {
+									foreach ( $widget_data[ $instance_id ] as $widget_key => $widget_value ) {
+										$menu = wp_get_nav_menu_object( $widget_value );
+
+										if ( is_object( $menu ) && $menu->term_id ) {
+											$widget[ $widget_key ] = $menu->term_id;
+										}
+									}
+								}
+							}
+							break;
 						case 'dropdown_pages':
 							foreach ( $dropdown_data as $widget_id => $widget_data ) {
 								if ( ! empty( $widget_data[ $instance_id ] ) && $widget_id == $widget_type ) {

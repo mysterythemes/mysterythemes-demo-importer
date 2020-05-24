@@ -96,6 +96,7 @@ jQuery(function($) {
                     $('.imported-success').attr('href', response.data.previewUrl);
                     $('.imported-success').attr('target', '_blank');
                     $('.imported-success').html('Visit Site');
+                    $('.imported-success').removeClass('mtdi-demo-import-step');
                     $( '.mtdi-customize-button' ).show();
                 } else {
                     $('.mtdi-demo-import-step').removeClass('updating-message');

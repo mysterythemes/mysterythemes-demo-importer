@@ -55,4 +55,4 @@ Import "Mystery Themes" every official themes by only a single click. Simple ins
 
 == Upgrade Notice ==
     = 1.0.1 - May 24, 2020 =
-        * Added - navaigation menu id set for widgets data update configuration.
+        * Fixed - Navigation menu issue in widget.
