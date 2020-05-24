@@ -647,14 +647,6 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 		 * @since 1.0.0
 		 */
 		public function mtdi_update_widget_data( $widget, $widget_type, $instance_id, $demo_data ) {
-
-			// if ( 'nav_menu' == $widget_type ) {
-			// 	$nav_menu = wp_get_nav_menu_object( $widget['title'] );
-
-			// 	if ( is_object( $nav_menu ) && $nav_menu->term_id ) {
-			// 		$widget['nav_menu'] = $nav_menu->term_id;
-			// 	}
-			// }
 			if ( ! empty( $demo_data['widgets_data_update'] ) ) {
 				foreach ( $demo_data['widgets_data_update'] as $dropdown_type => $dropdown_data ) {
 					if ( ! in_array( $dropdown_type, array( 'multi_checkbox', 'dropdown_categories', 'dropdown_pages', 'navigation_menus' ) ) ) {
