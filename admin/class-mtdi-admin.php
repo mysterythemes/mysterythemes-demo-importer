@@ -656,7 +656,7 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 				}
 			} elseif ( ! empty( $demo_data['widgets_data_update'] ) ) {
 				foreach ( $demo_data['widgets_data_update'] as $dropdown_type => $dropdown_data ) {
-					if ( ! in_array( $dropdown_type, array( 'multi_checkbox', 'dropdown_categories', 'dropdown_pages' ) ) ) {
+					if ( ! in_array( $dropdown_type, array( 'multi_checkbox', 'dropdown_categories', 'dropdown_pages', 'navigation_menus' ) ) ) {
 						continue;
 					}
 				
@@ -685,7 +685,19 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 								}
 							}
 							break;
+						case 'navigation_menus':
+							foreach ( $dropdown_data as $widget_id => $widget_data ) {
+								if ( ! empty( $widget_data[ $instance_id ] ) && $widget_id == $widget_type ) {
+									foreach ( $widget_data[ $instance_id ] as $widget_key => $widget_value ) {
+										$term = get_term_by('name', $widget_value, 'nav_menu');
 
+										if ( $term->term_id ) {
+											$widget[ $widget_key ] = $term->term_id;
+										}
+									}
+								}
+							}
+							break;
 						case 'dropdown_categories':
 							foreach ( $dropdown_data as $taxonomy => $taxonomy_data ) {
 								if ( ! taxonomy_exists( $taxonomy ) ) {
