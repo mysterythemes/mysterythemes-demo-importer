@@ -28,12 +28,12 @@ Import "Mystery Themes" every official themes by only a single click. Simple ins
     5. Activate The Plugin
     6. Use Mystery Themes Demo Importer on any themes from mysterythemes to import demo.
 
-    ## Manual Installation ##
-    1. Download the plugin from WordPress.org repository
-    2. On your WordPress admin dashboard, go to ‘Plugins > Add New > Upload Plugin’
-    3. Upload the downloaded plugin file (mysterythemes-demo-importer.zip) and click ‘Install Now’
-    4. Activate ‘Mystery Themes Demo Importer’ from your Plugins page.
-    5. Use Mystery Themes Demo Importer on any themes from mysterythemes to import demo.
+== Manual Installation ==
+1. Download the plugin from WordPress.org repository
+2. On your WordPress admin dashboard, go to ‘Plugins > Add New > Upload Plugin’
+3. Upload the downloaded plugin file (mysterythemes-demo-importer.zip) and click ‘Install Now’
+4. Activate ‘Mystery Themes Demo Importer’ from your Plugins page.
+5. Use Mystery Themes Demo Importer on any themes from mysterythemes to import demo.
 
 == Frequently Asked Questions ==
 
