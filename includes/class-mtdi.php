@@ -65,7 +65,7 @@ if( ! class_exists( 'MTDI' ) ) :
 			if ( defined( 'MTDI_VERSION' ) ) {
 				$this->version = MTDI_VERSION;
 			} else {
-				$this->version = '1.0.1';
+				$this->version = '1.0.2';
 			}
 			$this->plugin_name = 'mysterythemes-demo-importer';
 
@@ -197,9 +197,9 @@ if( ! class_exists( 'MTDI' ) ) :
 		 */
 		public function get_supported_themes() {
 
-			$mt_free_themes = array( 'color-blog', 'easy-store', 'edigital', 'editorial', 'faceblog', 'flexbile-lite', 'fotogenic', 'mismo', 'news-portal', 'owner', 'saaya', 'scholarship', 'swipewp', 'uniform', 'wp-diary', 'shopay' );
+			$mt_free_themes = array( 'color-blog', 'easy-store', 'edigital', 'editorial', 'faceblog', 'flexible-lite', 'flexible', 'fotogenic', 'mismo', 'news-portal', 'owner', 'saaya', 'scholarship', 'swipewp', 'swipe', 'uniform', 'wp-diary', 'shopay' );
 
-			$name_change 	= array( 5 => 'flexbile', 12 => 'swipe' );
+			$name_change 	= array();
 			$mt_themes 		= array_replace( $mt_free_themes, $name_change );
 
 			if ( ! empty( $mt_themes ) ) {
