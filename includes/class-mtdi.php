@@ -183,7 +183,6 @@ if( ! class_exists( 'MTDI' ) ) :
 				}
 
 				$this->loader->add_filter( 'plugin_action_links_', $plugin_admin, 'plugin_action_links' );
-				//$this->loader->add_filter( 'plugin_row_meta', $plugin_admin, 'plugin_row_meta', 10, 2 );
 			} else {
 				$this->loader->add_action( 'admin_notices', $plugin_admin, 'missing_notice' );
 			}
