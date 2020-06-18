@@ -85,7 +85,7 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 			 * between the defined hooks and the functions defined in this
 			 * class.
 			 */
-			$activated_theme = get_option( 'template' );
+			$activated_theme = get_stylesheet();
 
 			if ( $hook_suffix == 'appearance_page_'. esc_html( $activated_theme ) .'-settings' || $hook_suffix == 'appearance_page_mysterythemes-demo-importer' ) {
 				wp_enqueue_script( 'mtdi-admin', plugin_dir_url( __FILE__ ) . 'js/mtdi-admin.js', array( 'jquery','wp-util', 'updates' ), $this->version, false );
@@ -171,7 +171,6 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 			}
 
 			$selected_demo 	= get_template();
-			delete_transient( 'mtdi_theme_packages' );
 			$demodata 		= get_transient( 'mtdi_theme_packages' );
 
 			if ( empty( $demodata ) || $demodata == false ) {
@@ -411,7 +410,6 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 
 				$template = get_option( 'template' );
 				do_action( 'mtdi_ajax_before_demo_import' );
-				delete_transient( 'mtdi_theme_packages' );
 				$xmldemopackages = get_transient( 'mtdi_theme_packages' );
 				if( empty ( $xmldemopackages ) ) {
 					$xmldemopackages = $this->retrieve_demo_by_activatetheme( $template );

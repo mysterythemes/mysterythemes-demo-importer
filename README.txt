@@ -3,7 +3,7 @@ Contributors:       mysterythemes
 Tags:               mysterythemes, one click demo import, theme demos, demo, importer
 Requires at least:  4.7
 Tested up to:       5.3
-Stable tag:         1.0.3
+Stable tag:         1.0.4
 Requires PHP:       5.2.4
 License:            GPLv3
 License URI:        https://www.gnu.org/licenses/gpl-3.0.html
@@ -54,6 +54,9 @@ Import "Mystery Themes" every official themes by only a single click. Simple ins
         - Initial Release
 
 == Upgrade Notice ==
+    = 1.0.4 - June 18, 2020 =
+        * Added - some tweaks made in admin functions for child theme demo import support.
+
     = 1.0.3 - June 12, 2020 =
         * Added - support for child theme demo import.
 
