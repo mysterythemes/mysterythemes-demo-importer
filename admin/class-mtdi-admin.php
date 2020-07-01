@@ -117,7 +117,7 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 
 			$packages 			= array();
 			$xmldemopackages 	= get_transient( 'mtdi_theme_packages' );
-			$activated_theme 	= get_option( 'template' ); //template activate slug
+			$activated_theme 	= get_stylesheet(); //template activate slug
 
 			if ( false === $xmldemopackages || ( isset ( $packages->slug ) && $activated_theme !== $xmldemopackages->theme_slug ) ) {
 				$packages = $this->retrieve_demo_by_activatetheme( $activated_theme );

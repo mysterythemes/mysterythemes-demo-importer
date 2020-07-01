@@ -54,7 +54,7 @@ Import "Mystery Themes" every official themes by only a single click. Simple ins
         - Initial Release
 
 == Upgrade Notice ==
-    = 1.0.4 - June 18, 2020 =
+    = 1.0.4 - July 1, 2020 =
         * Added - some tweaks made in admin functions for child theme demo import support.
 
     = 1.0.3 - June 12, 2020 =
