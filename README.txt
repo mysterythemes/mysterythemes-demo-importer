@@ -3,7 +3,7 @@ Contributors:       mysterythemes
 Tags:               mysterythemes, one click demo import, theme demos, demo, importer
 Requires at least:  4.7
 Tested up to:       5.3
-Stable tag:         1.0.4
+Stable tag:         1.0.3
 Requires PHP:       5.2.4
 License:            GPLv3
 License URI:        https://www.gnu.org/licenses/gpl-3.0.html
@@ -19,6 +19,14 @@ Import "Mystery Themes" every official themes by only a single click. Simple ins
 
 * WordPress 4.7 or later.
 * [Mystery Themes Official Themes](https://mysterythemes.com/themes/).
+
+= Contribute =
+
+You can contribute to the source code in our [GitHub](https://github.com/mysterythemes/mysterythemes-demo-importer) page.
+
+= Video Tutorial =
+
+[youtube https://www.youtube.com/watch?v=1-PQXECGySk]
 
 == Installation ==
     1. Login to your WordPress Admin Area
@@ -50,14 +58,24 @@ Import "Mystery Themes" every official themes by only a single click. Simple ins
 3. Finally, Import the Demo with just one click.
 
 == Changelog ==
-    = 1.0.0 =
-        - Initial Release
+    = 1.0.4 - July 1, 2020 =
+        * Added - some tweaks made in admin functions for child theme demo import support.
+        
+    = 1.0.3 - June 16, 2020 =
+        * Added - support for child theme demo import.
+
+    = 1.0.2 - June 2, 2020 =
+        * Fixed - plugin activation issue when bulk install.
+        * Added - suffix modification for some altered free/pro theme names.
+
+    = 1.0.1 - May 24, 2020 =
+        * Fixed - Navigation menu issue in widget.
 
 == Upgrade Notice ==
     = 1.0.4 - July 1, 2020 =
         * Added - some tweaks made in admin functions for child theme demo import support.
-
-    = 1.0.3 - June 12, 2020 =
+        
+    = 1.0.3 - June 16, 2020 =
         * Added - support for child theme demo import.
 
     = 1.0.2 - June 2, 2020 =
