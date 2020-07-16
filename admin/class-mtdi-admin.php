@@ -73,17 +73,8 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 		 * @since    1.0.0
 		 */
 		public function enqueue_scripts( $hook_suffix ) {
-
 			/**
-			 * This function is provided for demonstration purposes only.
-			 *
-			 * An instance of this class should be passed to the run() function
-			 * defined in MTDI_Loader as all of the hooks are defined
-			 * in that particular class.
-			 *
-			 * The MTDI_Loader will then create the relationship
-			 * between the defined hooks and the functions defined in this
-			 * class.
+			 * Applies condition for theme settings page only.
 			 */
 			$activated_theme = get_stylesheet();
 
@@ -171,6 +162,7 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 			}
 
 			$selected_demo 	= get_template();
+			delete_transient( 'mtdi_theme_packages' );
 			$demodata 		= get_transient( 'mtdi_theme_packages' );
 
 			if ( empty( $demodata ) || $demodata == false ) {
@@ -381,7 +373,13 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 		public function import_all_demo() {
 
 			if (  wp_verify_nonce( $_POST['_wpnonce'], 'mtdi_admin_import_nonce' ) ) {
+				$execution_time = sanitize_text_field( $_POST['execution_time'] );
 				ini_set( 'memory_limit', '350M' );
+				if( $execution_time != 'default' ) {
+					ini_set( 'max_execution_time', apply_filters( 'mtdi_demo_import_execution_time', $execution_time ) );
+				} else {
+					ini_set( 'max_execution_time', apply_filters( 'mtdi_demo_import_execution_time', 300 ) );
+				}
 				
 				if ( empty( $_POST['plugin_slug'] ) ) {
 					wp_send_json_error(
@@ -1302,8 +1300,8 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 		function plugin_row_meta( $plugin_meta, $plugin_file ) {
 			if ( MTDI_PLUGIN_BASENAME === $plugin_file ) {
 				$new_plugin_meta = array(
-					'docs'    => '<a href="' . esc_url( apply_filters( 'mtdi_demo_importer_docs_url', 'https://mysterythemes.com/docs/mysterythemes-demo-importer/' ) ) . '" title="' . esc_attr( __( 'View Demo Importer Documentation', 'mysterythemes-demo-importer' ) ) . '" target="_blank">' . __( 'Documentation', 'mysterythemes-demo-importer' ) . '</a>',
-					'support' => '<a href="' . esc_url( apply_filters( 'mtdi_demo_importer_support_url', 'https://wordpress.org/support/plugin/mysterythemes-demo-importer' ) ) . '" title="' . esc_attr( __( 'Visit Free Support Forum', 'mysterythemes-demo-importer' ) ) . '" target="_blank">' . __( 'Free Support', 'mysterythemes-demo-importer' ) . '</a>',
+					'docs'    => '<a href="' . esc_url( apply_filters( 'mtdi_demo_importer_docs_url', '//mysterythemes.com/docs/mysterythemes-demo-importer/' ) ) . '" title="' . esc_attr( __( 'View Demo Importer Documentation', 'mysterythemes-demo-importer' ) ) . '" target="_blank">' . __( 'Documentation', 'mysterythemes-demo-importer' ) . '</a>',
+					'support' => '<a href="' . esc_url( apply_filters( 'mtdi_demo_importer_support_url', '//wordpress.org/support/plugin/mysterythemes-demo-importer' ) ) . '" title="' . esc_attr( __( 'Visit Free Support Forum', 'mysterythemes-demo-importer' ) ) . '" target="_blank">' . __( 'Free Support', 'mysterythemes-demo-importer' ) . '</a>',
 				);
 
 				return array_merge( $plugin_meta, $new_plugin_meta );
