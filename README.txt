@@ -3,7 +3,7 @@ Contributors:       mysterythemes
 Tags:               mysterythemes, one click demo import, theme demos, demo, importer
 Requires at least:  4.7
 Tested up to:       5.3
-Stable tag:         1.0.5
+Stable tag:         1.0.6
 Requires PHP:       5.2.4
 License:            GPLv3
 License URI:        https://www.gnu.org/licenses/gpl-3.0.html
@@ -58,6 +58,9 @@ You can contribute to the source code in our [GitHub](https://github.com/mystery
 3. Finally, Import the Demo with just one click.
 
 == Changelog ==
+    = 1.0.6 - July 31, 2020 =
+        * Added - customizer multicheckbox value setted
+        
     = 1.0.5 - July 16, 2020 =
         * Added - added scripts and attributes to work with custom execution time required for some themes' demo import.
         * Refine - code refine.

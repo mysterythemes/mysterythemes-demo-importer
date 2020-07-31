@@ -768,6 +768,47 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 					}
 
 					switch ( $data_type ) {
+						case 'categories':
+							foreach ( $data_value as $taxonomy => $taxonomy_data ) {
+								if ( ! taxonomy_exists( $taxonomy ) ) {
+									continue;
+								}
+
+								foreach ( $taxonomy_data as $option_key => $option_value ) {
+									if ( ! empty( $data['mods'][ $option_key ] ) ) {
+										$term = get_term_by( 'name', $option_value, $taxonomy );
+
+										if ( is_object( $term ) && $term->term_id ) {
+											$data['mods'][ $option_key ] = $term->term_id;
+										}
+									}
+								}
+							}
+							break;
+
+						case 'multi_categories':
+							foreach ( $data_value as $taxonomy => $taxonomy_data ) {
+								if ( ! taxonomy_exists( $taxonomy ) ) {
+									continue;
+								}
+
+								foreach ( $taxonomy_data as $option_key => $option_value ) {
+									if ( ! empty( $data['mods'][ $option_key ] ) ) {
+										$term_ids = array();
+										foreach ( $option_value as $op_key => $op_value ) {
+											$term = get_term_by( 'name', $op_value, $taxonomy );
+											if ( is_object( $term ) && $term->term_id ) {
+												$term_id = $term->term_id;
+												$term_ids[] = $term_id;
+											}
+                                        }
+        								$multi_values = ! is_array( $term_ids ) ? explode( ',', $term_ids ) : $term_ids;
+        								$multi_s_value = array_map( 'sanitize_text_field', $multi_values );
+                                        $data['mods'][ $option_key ] = $multi_s_value;
+									}
+								}
+							}
+							break;
 						case 'nav_menu_locations':
 							$nav_menus = wp_get_nav_menus();
 
