@@ -3,7 +3,7 @@ Contributors:       mysterythemes
 Tags:               mysterythemes, one click demo import, theme demos, demo, importer
 Requires at least:  4.7
 Tested up to:       5.3
-Stable tag:         1.0.6
+Stable tag:         1.0.7
 Requires PHP:       5.2.4
 License:            GPLv3
 License URI:        https://www.gnu.org/licenses/gpl-3.0.html
@@ -58,10 +58,13 @@ You can contribute to the source code in our [GitHub](https://github.com/mystery
 3. Finally, Import the Demo with just one click.
 
 == Changelog ==
+    = 1.0.7 - Aug 10, 2020 =
+        * Added - plugin installation added for local plugin available at themes directory.
+        
     = 1.0.6 - July 31, 2020 =
         * Added - customizer multicheckbox value setted
-        
-    = 1.0.5 - July 16, 2020 =
+
+    = 1.0.5 - July 18, 2020 =
         * Added - added scripts and attributes to work with custom execution time required for some themes' demo import.
         * Refine - code refine.
 
@@ -78,5 +81,26 @@ You can contribute to the source code in our [GitHub](https://github.com/mystery
     = 1.0.1 - May 24, 2020 =
         * Fixed - Navigation menu issue in widget.
 
-    = 1.0.0 =
-        * Initial Release.
+== Upgrade Notice ==
+    = 1.0.7 - Aug 7, 2020 =
+        * Added - plugin installation added for local plugin available at themes directory.
+
+    = 1.0.6 - July 31, 2020 =
+        * Added - customizer multicheckbox value setted
+        
+    = 1.0.5 - July 18, 2020 =
+        * Added - added scripts and attributes to work with custom execution time required for some themes' demo import.
+        * Refine - code refine.
+
+    = 1.0.4 - July 1, 2020 =
+        * Added - some tweaks made in admin functions for child theme demo import support.
+        
+    = 1.0.3 - June 16, 2020 =
+        * Added - support for child theme demo import.
+
+    = 1.0.2 - June 2, 2020 =
+        * Fixed - plugin activation issue when bulk install.
+        * Added - suffix modification for some altered free/pro theme names.
+
+    = 1.0.1 - May 24, 2020 =
+        * Fixed - Navigation menu issue in widget.

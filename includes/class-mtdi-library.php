@@ -66,7 +66,6 @@ if ( ! class_exists( 'MTDI_Library' ) ) :
 				return $all_json_data;
 			}
 			$all_json_data 	= json_decode( $all_json_data , true );
-			
 			return apply_filters( 'mtdi_all_json_demo_data', $all_json_data );
 		}
 

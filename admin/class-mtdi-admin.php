@@ -109,7 +109,7 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 			$packages 			= array();
 			$xmldemopackages 	= get_transient( 'mtdi_theme_packages' );
 			$activated_theme 	= get_stylesheet(); //template activate slug
-
+			
 			if ( false === $xmldemopackages || ( isset ( $packages->slug ) && $activated_theme !== $xmldemopackages->theme_slug ) ) {
 				$packages = $this->retrieve_demo_by_activatetheme( $activated_theme );
 				if ( $packages ) {
@@ -231,6 +231,29 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 				}
 			}
 
+			// Install plugin locally fro m zip file
+			if( isset( $_POST['install'] ) && ( $_POST['install'] === "locally" ) ) {
+				$file_location = get_template_directory() . '/inc/plugins/' . esc_html( $plugin_slug ) . '.zip';
+				$file = $_POST['file'];
+				$plugin_directory = ABSPATH . 'wp-content/plugins/';
+
+				$zip = new ZipArchive;
+				if ( $zip->open( esc_html( $file_location ) ) === TRUE ) {
+					$zip->extractTo( $plugin_directory );
+					$zip->close();
+						    
+					if ( file_exists( WP_PLUGIN_DIR . '/' . $plugin_slug ) ) {
+						$plugin_data          = get_plugin_data( WP_PLUGIN_DIR . '/' . $plugin_init );
+						$status['plugin']     = $plugin_init;
+						$status['pluginName'] = $plugin_data['Name'];
+						$this->check_do_activate_plugin( $plugin_init );
+					}
+				} else {
+					$status['errorMessage'] = esc_html__( 'There was an error installing plugin', 'mysterythemes-demo-importer' );
+					wp_send_json_error( $status );
+				}
+			}
+			
 			$api = plugins_api(
 				'plugin_information',
 				array(
@@ -763,7 +786,7 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 
 			if ( ! empty( $demo_data['customizer_data_update'] ) ) {
 				foreach ( $demo_data['customizer_data_update'] as $data_type => $data_value ) {
-					if ( ! in_array( $data_type, array( 'pages', 'categories', 'nav_menu_locations' ) ) ) {
+					if ( ! in_array( $data_type, array( 'pages', 'categories', 'nav_menu_locations', 'multi_categories' ) ) ) {
 						continue;
 					}
 

@@ -125,6 +125,7 @@ jQuery(function($) {
                 var SinglePluginSlug =  uninstalledContainer.data( 'slug' );
                 var SinglePluginName = uninstalledContainer.data( 'name' );
                 var SinglePluginInit = uninstalledContainer.data( 'init' );
+                var SinglePluginInstall = uninstalledContainer.data( 'install' );
                 var selfClass = 'mtdi-install-plugin';
             } else {
                 var SinglePluginSlug =  unactivatedContainer.data( 'slug' );
@@ -132,17 +133,22 @@ jQuery(function($) {
                 var SinglePluginInit = unactivatedContainer.data( 'init' );
                 var selfClass = 'mtdi-activate-now';
             }
+            var ajaxData;
+            ajaxData = {
+                'action': 'mtdi_requried_plugin_install',
+                'plugin_slug': SinglePluginSlug, //slug
+                'plugin_init': SinglePluginInit,
+                'plugin_name': SinglePluginName,
+                'pluginList': pluginLists,
+                '_wpnonce': _wpnonce,
+            }
+            if( typeof SinglePluginInstall != "undefined" ) {
+                ajaxData.install = SinglePluginInstall;
+            }
             $.ajax({
                 method: "POST",
                 url: AjaxUrl,
-                data: ({
-                    'action': 'mtdi_requried_plugin_install',
-                    'plugin_slug': SinglePluginSlug, //slug
-                    'plugin_init': SinglePluginInit,
-                    'plugin_name': SinglePluginName,
-                    'pluginList': pluginLists,
-                    '_wpnonce': _wpnonce,
-                }),
+                data: ajaxData,
                 beforeSend: function() {
                     console.log( 'Installing ' + SinglePluginName );
                     var button_text = $('.mtdi-' + SinglePluginSlug).hasClass('mtdi-activate-now') ? plugin_activating : plugin_installing;

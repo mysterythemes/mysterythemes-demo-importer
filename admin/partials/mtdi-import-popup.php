@@ -88,7 +88,7 @@ $theme_version 	= $current_theme->get( 'Version' );
 												<a href="<?php echo esc_url( '//wordpress.org/plugins/' ).esc_attr ( $key ); ?>" target="_blank"><?php echo esc_html ( $value['name'] ); ?></a>
 											</td>
 					  						<td class="plugin-status">
-												<a disabled="disabled" class="<?php echo esc_attr ( $button_classes ); ?> instalplugin1 alignright mtdi-<?php echo esc_attr ( $key ); ?>" data-init="<?php echo esc_attr ( $value['slug'] ); ?>" data-slug="<?php echo esc_attr ( $key ); ?>" data-name="<?php echo esc_attr ( $value['name'] ); ?>"><?php echo esc_html ( $button_text ); ?></a>
+												<a disabled="disabled" class="<?php echo esc_attr ( $button_classes ); ?> instalplugin1 alignright mtdi-<?php echo esc_attr ( $key ); ?>" <?php if( isset( $value['install'] ) ) echo 'data-install="'.esc_html( $value['install'] ).'"'; ?> data-init="<?php echo esc_attr ( $value['slug'] ); ?>" data-slug="<?php echo esc_attr ( $key ); ?>" data-name="<?php echo esc_attr ( $value['name'] ); ?>"><?php echo esc_html ( $button_text ); ?></a>
 											</td>
 										</tr>
 								<?php endforeach; ?>
